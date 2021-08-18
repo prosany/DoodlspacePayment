@@ -5,7 +5,438 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doodle Space Payment</title>
-    <style></style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap');
+
+        /* Common Style */
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Varela Round', sans-serif;
+            background: #EEEFF2;
+        }
+
+        .container {
+            width: 70%;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        header {
+            width: 100%;
+            height: 55px;
+            border-bottom: 1px solid #e2e2e2;
+            line-height: 55px;
+            text-align: center;
+        }
+
+        header a {
+            padding: 0 10px;
+            text-decoration: none;
+            color: #333;
+            font-size: 13px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            background-image: url(./assets/icons/Star.svg), url(./assets/icons/Lightning.svg);
+            background-position: 10% center, 90% center;
+            background-repeat: no-repeat, no-repeat;
+            background-size: 80px, 80px;
+            height: 40vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-section>h1 {
+            font-weight: 700;
+            font-size: 40px;
+        }
+
+        .hero-section>p {
+            font-size: 13px;
+            color: #545F75;
+            text-align: center;
+            display: none;
+            margin: 15px 0;
+        }
+
+
+        .tabs {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            clear: both;
+        }
+
+        .tabs>ul {
+            list-style: none;
+            border: 2px solid #e8e8e8;
+            border-radius: 20px;
+            padding: 3px 0;
+        }
+
+        .tabs>ul li {
+            margin: 0 5px;
+            display: inline-block;
+        }
+
+        .tabs>ul li .active {
+            background-color: #FF6510;
+            color: #FFFFFF;
+            padding: 10px 20px;
+            border-radius: 20px;
+        }
+
+        .tabs>ul li a {
+            text-decoration: none;
+            display: block;
+            padding: 10px 20px;
+            color: #545F75;
+            font-weight: 700;
+        }
+
+        .tabs>ul li:last-child a {
+            border-left: 1px solid #dedede;
+        }
+
+
+        /* New Code */
+
+        .packages {
+            width: 100%;
+            display: flex;
+            flex: 1 1 1;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+        }
+
+        .packages:first-child .pack {
+            margin-left: 35px;
+        }
+
+        .packages>.pack {
+            background: rgb(231, 232, 237);
+            background: linear-gradient(158deg, #E7E8ED 35%, #F0F2F4 100%);
+            width: 32%;
+            min-height: 540px;
+            box-shadow: -3px 0px 21px -2px #fff, 21px 20px 13px -15px #d6d6d6;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .topPart {
+            width: 100%;
+            padding: 20px 0;
+            border-bottom: 1px solid rgb(224 224 224);
+        }
+
+        .topPart>h3 {
+            font-weight: 900;
+            color: #1F252B;
+            margin: 15px 0;
+        }
+
+        .pack:last-child .topPart>h1 {
+            background: url(./assets/icons/StarOne.svg);
+            background-position: 85% top;
+            background-repeat: no-repeat;
+            background-size: 40px;
+        }
+
+        .topPart>h1 {
+            font-weight: 700;
+            color: #1F252B;
+            font-size: 40px;
+            font-family: 'Montserrat', sans-serif;
+            margin: 15px 0;
+        }
+
+        .topPart>h1 sub {
+            font-weight: 600;
+            font-size: 13px;
+            color: #545F75;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .topPart>p {
+            margin: 15px 30px;
+            text-align: center;
+            color: #545F75;
+            font-size: 12px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .topPart>.customIl {
+            color: #1F252B;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 8px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #FFFFFF66;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+            margin-left: 10px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 2px;
+            bottom: 1px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked+.slider {
+            background-color: #FF6510;
+        }
+
+        input:checked+.slider:before {
+            -webkit-transform: translateX(19px);
+            -ms-transform: translateX(19px);
+            transform: translateX(19px);
+        }
+
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
+
+
+        .popular {
+            background: #545F75;
+            position: absolute;
+            top: 0;
+            color: #fff;
+            font-size: 11px;
+            padding: 6px 30px;
+            border-radius: 0 0 10px 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .popular img {
+            width: 10px;
+            height: 10px;
+            margin-left: 10px;
+        }
+
+
+
+        .middlePart {
+            margin: 15px 0 15px 15%;
+            text-align: center;
+        }
+
+        .hideFeatures {
+            color: rgba(84, 95, 117, .5) !important;
+        }
+
+        .hideFeatures>span img {
+            visibility: hidden;
+        }
+
+        .middlePart p {
+            text-align: justify;
+            color: #545F75;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 25px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .middlePart p>span img {
+            width: 12px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+
+
+        .bottomPart {
+            width: 100%;
+        }
+
+        .bottomPart a {
+            display: block;
+            text-decoration: none;
+            color: #545F75;
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .buyPlan {
+            background: #FF6510;
+            margin: 20px 20px;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 13px !important;
+            border-radius: 20px;
+            color: #fff !important;
+        }
+
+
+
+        /* Responsive Design */
+        @media only screen and (max-width: 1260px) {
+            .packages>.pack {
+                min-height: 560px;
+            }
+        }
+
+        @media only screen and (max-width: 1190px) {
+            .container {
+                width: 80%;
+                margin: 0 auto;
+            }
+        }
+
+        @media only screen and (max-width: 1035px) {
+            .container {
+                width: 90%;
+                margin: 0 auto;
+            }
+        }
+
+        @media only screen and (max-width: 910px) {
+            .hero-section>h1 {
+                font-weight: 700;
+                font-size: 30px;
+            }
+        }
+
+        @media only screen and (max-width: 850px) {
+            .packages>.pack {
+                width: 40%;
+            }
+        }
+
+        @media only screen and (max-width: 730px) {
+            .hero-section {
+                background-position: 10% center, 90% center;
+                background-size: 50px, 50px;
+            }
+
+            .packages>.pack {
+                width: 50%;
+            }
+        }
+
+        @media only screen and (max-width: 655px) {
+            .hero-section {
+                background-position: 10% center, 90% center;
+                background-size: 30px, 30px;
+            }
+
+            .packages:first-child .pack {
+                margin-left: 0;
+            }
+
+            .packages>.pack {
+                width: 80%;
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            .hero-section {
+                background-position: 10% center, 90% center;
+                background-size: 30px, 30px;
+            }
+
+            .packages {
+                width: 100%;
+                text-align: center;
+                display: flex;
+                flex: 0 0 0;
+                flex-direction: column;
+                margin: 30px 0;
+            }
+
+            .packages:first-child .pack {
+                margin-left: 0;
+                margin-bottom: 35px;
+            }
+
+            .packages>.pack {
+                width: 100%;
+                min-height: 530px;
+            }
+        }
+
+        @media only screen and (max-width: 500px) {
+            .hero-section {
+                background-position: 10% 5%, 90% 80%;
+                background-size: 50px, 50px;
+                flex-direction: column;
+            }
+
+            .hero-section>h1 {
+                font-weight: 700;
+                font-size: 25px;
+            }
+
+            .packages>.pack {
+                width: 100%;
+                min-height: 545px;
+            }
+
+            .hero-section>p {
+                display: block;
+            }
+
+        }
+
+    </style>
+    <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
 <body>
     <header>
@@ -14,5 +445,76 @@
         <a href="#">Resources</a>
         <a href="#">Pricing</a>
     </header>
+    <main>
+        <div class="container">
+            <div class="hero-section">
+                <h1>We’re gonna make you an<br />offer you can’t refuse</h1>
+                <p>Check out some of our recent design projects.</p>
+            </div>
+        </div>
+        <section class="tabs">
+            <ul>
+                <li><a href="#" class="active">Annually</a></li>
+                <li><a href="#">Quarterly</a></li>
+                <li><a href="#">Monthly</a></li>
+            </ul>
+        </section>
+        <section class="container">
+            <div class="packages">
+                <div class="pack">
+                    <div class="topPart">
+                        <h3>Standard</h3>
+                        <h1>$50<sub>/year</sub></h1>
+                        <p>Queue up as many design requests you want. Need to change color</p>
+                    </div>
+                    <div class="middlePart">
+                        <p><span><img src="./assets/icons/tick.svg" /></span>Logo Design</p>
+                        <p><span><img src="./assets/icons/tick.svg" /></span>Digital</p>
+                        <p><span><img src="./assets/icons/tick.svg" /></span>Print Collaterals</p>
+                        <p><span><img src="./assets/icons/tick.svg" /></span>Merch</p>
+                        <p class="hideFeatures"><span><img src="./assets/icons/tick.svg" /></span>Pitch Decks</p>
+                        <p class="hideFeatures"><span><img src="./assets/icons/tick.svg" /></span>2-3 sec Animated GIFs
+                        </p>
+                        <p class="hideFeatures"><span><img src="./assets/icons/tick.svg" /></span>Custom Illustration*
+                        </p>
+                    </div>
+                    <div class="bottomPart">
+                        <a href="#" class="buyPlan" rel="noopener noreferrer">Buy Plan</a>
+                        <a href="#" rel="noopener noreferrer">Try free for 10 days</a>
+                    </div>
+                </div>
+                <div class="pack">
+                    <div class="popular">Popular<img src="./assets/icons/Star_Popular.svg" /></div>
+                    <div class="topPart">
+                        <h3>Advanced</h3>
+                        <h1>$80<sub>/year</sub></h1>
+                        <p>Queue up as many design requests you want. Need to change color</p>
+                        <div class="customIl">
+                            Custom illustrations
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="middlePart">
+                        <p><span><img src="./assets/icons/tick.svg" /></span>Logo Design</p>
+                        <p><span><img src="./assets/icons/tick.svg" /></span>Digital</p>
+                        <p><span><img src="./assets/icons/tick.svg" /></span>Print Collaterals</p>
+                        <p><span><img src="./assets/icons/tick.svg" /></span>Merch</p>
+                        <p><span><img src="./assets/icons/tick.svg" /></span>Pitch Decks</p>
+                        <p><span><img src="./assets/icons/tick.svg" /></span>2-3 sec Animated GIFs</p>
+                        <p class="hideFeatures"><span><img src="./assets/icons/tick.svg" /></span>Custom Illustration*
+                        </p>
+                    </div>
+                    <div class="bottomPart">
+                        <a href="#" class="buyPlan" rel="noopener noreferrer">Buy Plan</a>
+                        <a href="#" rel="noopener noreferrer">Try free for 10 days</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="./script.js"></script>
 </body>
 </html>
