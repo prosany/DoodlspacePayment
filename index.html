@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FF6510">
     <title>Doodle Space Payment</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
@@ -378,7 +379,7 @@
             }
 
             .packages:first-child .pack {
-                margin-left: 0;
+                margin-left: 30px;
             }
 
             .packages>.pack {
@@ -426,7 +427,7 @@
 
             .packages>.pack {
                 width: 100%;
-                min-height: 545px;
+                min-height: 540px;
             }
 
             .hero-section>p {
@@ -443,7 +444,7 @@
         <a href="#">Services</a>
         <a href="#">Portfolio</a>
         <a href="#">Resources</a>
-        <a href="#">Pricing</a>
+        <a href="#">Pricing</a>/
     </header>
     <main>
         <div class="container">
@@ -452,7 +453,7 @@
                 <p>Check out some of our recent design projects.</p>
             </div>
         </div>
-        <section class="tabs">
+        <section class="tabs" id="tabs">
             <ul>
                 <li><a href="#" class="active">Annually</a></li>
                 <li><a href="#">Quarterly</a></li>
@@ -464,7 +465,7 @@
                 <div class="pack">
                     <div class="topPart">
                         <h3>Standard</h3>
-                        <h1>$50<sub>/year</sub></h1>
+                        <h1 id="p_standard_price">$50<sub id="p_duration">/year</sub></h1>
                         <p>Queue up as many design requests you want. Need to change color</p>
                     </div>
                     <div class="middlePart">
@@ -479,7 +480,8 @@
                         </p>
                     </div>
                     <div class="bottomPart">
-                        <a href="#" class="buyPlan" rel="noopener noreferrer">Buy Plan</a>
+                        <a href="http://google.com" id="standard_buy_link" class="buyPlan" rel="noopener noreferrer">Buy
+                            Plan</a>
                         <a href="#" rel="noopener noreferrer">Try free for 10 days</a>
                     </div>
                 </div>
@@ -487,12 +489,12 @@
                     <div class="popular">Popular<img src="./assets/icons/Star_Popular.svg" /></div>
                     <div class="topPart">
                         <h3>Advanced</h3>
-                        <h1>$80<sub>/year</sub></h1>
+                        <h1 id="p_advanced_price">$80<sub id="p_duration">/year</sub></h1>
                         <p>Queue up as many design requests you want. Need to change color</p>
                         <div class="customIl">
                             Custom illustrations
                             <label class="switch">
-                                <input type="checkbox">
+                                <input type="checkbox" id="add_on_pack">
                                 <span class="slider round"></span>
                             </label>
                         </div>
@@ -504,11 +506,13 @@
                         <p><span><img src="./assets/icons/tick.svg" /></span>Merch</p>
                         <p><span><img src="./assets/icons/tick.svg" /></span>Pitch Decks</p>
                         <p><span><img src="./assets/icons/tick.svg" /></span>2-3 sec Animated GIFs</p>
-                        <p class="hideFeatures"><span><img src="./assets/icons/tick.svg" /></span>Custom Illustration*
+                        <p class="hideFeatures" id="customIl"><span><img src="./assets/icons/tick.svg" /></span>Custom
+                            Illustration*
                         </p>
                     </div>
                     <div class="bottomPart">
-                        <a href="#" class="buyPlan" rel="noopener noreferrer">Buy Plan</a>
+                        <a href="http://google.com" id="advanced_buy_link" class="buyPlan" rel="noopener noreferrer">Buy
+                            Plan</a>
                         <a href="#" rel="noopener noreferrer">Try free for 10 days</a>
                     </div>
                 </div>
