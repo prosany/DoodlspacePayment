@@ -8,7 +8,9 @@ const advanced_buy_link = document.querySelector("#advanced_buy_link");
 let add_on_pack = document.getElementById("add_on_pack");
 const showFeatures = document.querySelector("#customIl");
 
-
+window.addEventListener("load", function() {
+    add_on_pack.checked = false;
+})
 tabs.forEach(function (tab, tab_index) {
     tab.addEventListener("click", function (e) {
         add_on_pack.checked = false;
