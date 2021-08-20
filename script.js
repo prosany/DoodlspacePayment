@@ -8,9 +8,7 @@ const advanced_buy_link = document.querySelector("#advanced_buy_link");
 let add_on_pack = document.getElementById("add_on_pack");
 const showFeatures = document.querySelector("#customIl");
 
-window.addEventListener("load", function() {
-    add_on_pack.checked = false;
-})
+
 tabs.forEach(function (tab, tab_index) {
     tab.addEventListener("click", function (e) {
         add_on_pack.checked = false;
@@ -20,33 +18,45 @@ tabs.forEach(function (tab, tab_index) {
             if (e.target.checked) {
                 if (tab_index == 0) {
                     advanced_package.innerHTML = "$100<sub id='p_duration'>/year</sub>";
-                    advanced_buy_link.href = "http://google.com/2";
+                    advanced_buy_link.href = "./pages/success1.html";
+                    localStorage.setItem("advPack", "Advanced with CI addon");
+                    localStorage.setItem("advPrice", "$100/year");
                     showFeatures.classList.remove("hideFeatures");
                 }
                 if (tab_index == 1) {
                     advanced_package.innerHTML = "$80<sub id='p_duration'>/quarterly</sub>";
-                    advanced_buy_link.href = "http://ggg.com/2";
+                    advanced_buy_link.href = "./pages/success1.html";
+                    localStorage.setItem("advPack", "Advanced with CI addon");
+                    localStorage.setItem("advPrice", "$80/quarterly");
                     showFeatures.classList.remove("hideFeatures");
                 }
                 if (tab_index == 2) {
                     advanced_package.innerHTML = "$60<sub id='p_duration'>/monthly</sub>";
-                    advanced_buy_link.href = "http://fff.com/2";
+                    advanced_buy_link.href = "./pages/success1.html";
+                    localStorage.setItem("advPack", "Advanced with CI addon");
+                    localStorage.setItem("advPrice", "$60/monthly");
                     showFeatures.classList.remove("hideFeatures");
                 }
             } else {
                 if (tab_index == 0) {
                     advanced_package.innerHTML = "$80<sub id='p_duration'>/year</sub>";
-                    advanced_buy_link.href = "http://google.com/2";
+                    advanced_buy_link.href = "./pages/success1.html";
+                    localStorage.setItem("advPack", "Advanced");
+                    localStorage.setItem("advPrice", "$80/year");
                     showFeatures.classList.add("hideFeatures");
                 }
                 if (tab_index == 1) {
                     advanced_package.innerHTML = "$60<sub id='p_duration'>/quarterly</sub>";
-                    advanced_buy_link.href = "http://ggg.com/2";
+                    advanced_buy_link.href = "./pages/success1.html";
+                    localStorage.setItem("advPack", "Advanced");
+                    localStorage.setItem("advPrice", "$60/quarterly");
                     showFeatures.classList.add("hideFeatures");
                 }
                 if (tab_index == 2) {
                     advanced_package.innerHTML = "$40<sub id='p_duration'>/monthly</sub>";
-                    advanced_buy_link.href = "http://fff.com/2";
+                    advanced_buy_link.href = "./pages/success1.html";
+                    localStorage.setItem("advPack", "Advanced");
+                    localStorage.setItem("advPrice", "$40/monthly");
                     showFeatures.classList.add("hideFeatures");
                 }
             }
@@ -61,22 +71,53 @@ tabs.forEach(function (tab, tab_index) {
             if (tab_index == 0) {
                 standard_package.innerHTML = "$50<sub id='p_duration'>/year</sub>";
                 advanced_package.innerHTML = "$80<sub id='p_duration'>/year</sub>";
-                standard_buy_link.href = "http://google.com";
-                advanced_buy_link.href = "http://google.com/2";
+                localStorage.setItem("stdPack", "Standard");
+                localStorage.setItem("stdPrice", "$50/year");
+                localStorage.setItem("advPack", "Advanced");
+                localStorage.setItem("advPrice", "$80/year");
+                standard_buy_link.href = "./pages/success2.html";
+                advanced_buy_link.href = "./pages/success1.html";
             }
             if (tab_index == 1) {
                 standard_package.innerHTML = "$30<sub id='p_duration'>/quarterly</sub>";
                 advanced_package.innerHTML = "$60<sub id='p_duration'>/quarterly</sub>";
-                standard_buy_link.href = "http://ggg.com";
-                advanced_buy_link.href = "http://ggg.com/2";
+                localStorage.setItem("stdPack", "Standard");
+                localStorage.setItem("stdPrice", "$30/quarterly");
+                localStorage.setItem("advPack", "Advanced");
+                localStorage.setItem("advPrice", "$60/quarterly");
+                standard_buy_link.href = "./pages/success2.html";
+                advanced_buy_link.href = "./pages/success1.html";
             }
             if (tab_index == 2) {
                 standard_package.innerHTML = "$15<sub id='p_duration'>/monthly</sub>";
                 advanced_package.innerHTML = "$40<sub id='p_duration'>/monthly</sub>";
-                standard_buy_link.href = "http://fff.com";
-                advanced_buy_link.href = "http://fff.com/2";
+                localStorage.setItem("stdPack", "Standard");
+                localStorage.setItem("stdPrice", "$15/monthly");
+                localStorage.setItem("advPack", "Advanced");
+                localStorage.setItem("advPrice", "$40/monthly");
+                standard_buy_link.href = "./pages/success2.html";
+                advanced_buy_link.href = "./pages/success1.html";
             }
         })
     })
 });
 
+window.addEventListener("load", function () {
+    localStorage.clear();
+    add_on_pack.checked = false;
+    add_on_pack.addEventListener("change", function (e) {
+        if (e.target.checked) {
+            advanced_package.innerHTML = "$100<sub id='p_duration'>/year</sub>";
+            advanced_buy_link.href = "./pages/success1.html";
+            localStorage.setItem("advPack", "Advanced with CI addon");
+            localStorage.setItem("advPrice", "$100/year");
+            showFeatures.classList.remove("hideFeatures");
+        } else {
+            advanced_package.innerHTML = "$80<sub id='p_duration'>/year</sub>";
+            advanced_buy_link.href = "./pages/success1.html";
+            localStorage.setItem("advPack", "Advanced");
+            localStorage.setItem("advPrice", "$80/year");
+            showFeatures.classList.add("hideFeatures");
+        }
+    })
+})

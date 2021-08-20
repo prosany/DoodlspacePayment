@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>DoodleSpace Payments</title>
+</head>
+<body>
+    <main>
+        <h2 class="thankYou">Thank You.</h2>
+        <img src="../assets/icons/payment-success.png" alt="">
+        <h2 class="paymentSuccess">Payment was processed successfully.</h2>
+        <p>Details of the transaction has been included below</p>
+        <div class="orderDetails">
+            <h4>Order Details</h4>
+            <div class="flex">
+                <h5>Order Id</h5>
+                <div></div>
+                <h5 id="orderId"></h5>
+            </div>
+            <div class="flex">
+                <h5>Customer Name</h5>
+                <div></div>
+                <h5>DoodleSpace User</h5>
+            </div>
+            <div class="flex">
+                <h5>Packages</h5>
+                <div></div>
+                <h5 id="stdPack"></h5>
+            </div>
+            <div class="flex">
+                <h5>Amount</h5>
+                <div></div>
+                <h5 id="stdPrice"></h5>
+            </div>
+        </div>
+    </main>
+    <script>
+        window.addEventListener("load", function () {
+            document.querySelector("#orderId").innerHTML = `#${Math.floor(100000 + Math.random() * 900434343000)}`;
+            if (localStorage.getItem("stdPack") && localStorage.getItem("stdPrice")) {
+                document.querySelector("#stdPack").innerText = `${localStorage.getItem("stdPack")}`;
+                document.querySelector("#stdPrice").innerText = `${localStorage.getItem("stdPrice")}`;
+            } else {
+                document.querySelector("#stdPack").innerText = "Standard";
+                document.querySelector("#stdPrice").innerText = "$50/year";
+            }
+        })
+    </script>
+</body>
+</html>
