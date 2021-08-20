@@ -41,7 +41,13 @@
     </main>
     <script>
         window.addEventListener("load", function () {
-            document.querySelector("#orderId").innerHTML = `#${Math.floor(100000 + Math.random() * 900434343000)}`;
+            if(localStorage.getItem("orderId")){
+                document.querySelector("#orderId").innerText = `$${localStorage.getItem("orderId")}`;
+            }else{
+                let orderID = Math.floor(100000 + Math.random() * 900434343000);
+                localStorage.setItem("orderId", orderID)
+                document.querySelector("#orderId").innerHTML = `#${orderID}`;
+            }
             if (localStorage.getItem("stdPack") && localStorage.getItem("stdPrice")) {
                 document.querySelector("#stdPack").innerText = `${localStorage.getItem("stdPack")}`;
                 document.querySelector("#stdPrice").innerText = `${localStorage.getItem("stdPrice")}`;
