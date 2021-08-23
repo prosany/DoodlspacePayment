@@ -4,10 +4,91 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <meta name="theme-color" content="#FF6510">
     <link rel="icon" href="../favicon.ico" />
     <title>DoodleSpace Payments</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Varela Round', sans-serif;
+            background: #fff;
+            color: #353535;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main .thankYou {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        main img {
+            width: 80px;
+            height: auto;
+        }
+
+        main .paymentSuccess {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        main p {
+            font-size: 16px;
+            margin-top: 8px;
+        }
+
+        .orderDetails {
+            width: 400px;
+            margin-top: 20px;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            color: #555;
+        }
+
+        .orderDetails h4 {
+            border-bottom: 1px solid #e8e8e8;
+            display: flex;
+            padding: 8px 0;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .orderDetails>.flex {
+            display: flex;
+            position: relative;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .orderDetails>.flex:last-child {
+            border-bottom: 0px solid #e8e8e8;
+        }
+
+        .orderDetails>.flex>div {
+            position: absolute;
+            top: 50%;
+            height: 80%;
+            left: 50%;
+            border-radius: 10px;
+            transform: translate(-50%, -50%);
+            border-left: 1px solid #e8e8e8;
+        }
+
+    </style>
 </head>
 <body>
     <main>
@@ -41,9 +122,9 @@
     </main>
     <script>
         window.addEventListener("load", function () {
-            if(localStorage.getItem("orderId")){
+            if (localStorage.getItem("orderId")) {
                 document.querySelector("#orderId").innerText = `$${localStorage.getItem("orderId")}`;
-            }else{
+            } else {
                 let orderID = Math.floor(100000 + Math.random() * 900434343000);
                 localStorage.setItem("orderId", orderID)
                 document.querySelector("#orderId").innerHTML = `#${orderID}`;
